@@ -1,0 +1,86 @@
+<div class="container">
+    <div class="breadcrumbs">
+        <a href="#" class="home"> Home </a>
+        <span> > </span>
+        <a href="#" class="active"> Locals</a>
+    </div>
+
+    <div class="search">
+        <input type="text" class="search-input" placeholder="Search">
+    </div>
+
+    <div class="list">
+        <div class="header">
+            <div>
+                Local
+            </div>
+            <div>
+                Country
+            </div>
+            <div>
+                State
+            </div>
+            <div>
+                Actions
+            </div>
+        </div>
+        <div>
+            <ng-container *ngFor="let item of unionTree; let i = index">
+                <ng-container>
+                    <div class="body">
+                        <div (click)="expanded[item.parent.id] = !expanded[item.parent.id]" class="cursor-pointer">
+                            <i class="fa fa-caret-{{expanded[item.parent.id] ? 'up' : 'down'}}" aria-hidden="true"></i>
+                            {{item.parent.levelValue}}
+                        </div>
+                        <div>
+                            {{item.parent.country || '-'}}
+                        </div>
+                        <div>
+                            {{item.parent.state || '-'}}
+                        </div>
+                        <div>
+                            <a>
+                                <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
+                                <!-- <div class="dropdown">
+                                    <div class="dropdown-toggle" type="button"
+                                        data-toggle="dropdown">
+                                        <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
+                                    </div>
+                                    <ul class="dropdown-menu">
+                                        <li><a>View</a></li>
+                                    </ul>
+                                </div> -->
+                            </a>
+                        </div>
+                    </div>
+                    <ng-container *ngFor="let children of item.childArr">
+                        <div *ngIf="expanded[item.parent.id]">
+                            <div class="body">
+                                <div>
+                                    {{children.levelValue}}
+                                </div>
+                                <div>
+                                    {{children.country || '-'}}
+                                </div>
+                                <div>
+                                    {{children.state || '-'}}
+                                </div>
+                                <div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </ng-container>
+                </ng-container>
+            </ng-container>
+        </div>
+    </div>
+
+    <button class="fab-btn" (click)="navigateToAdd()">
+        <span>
+            <i class="fa fa-plus" aria-hidden="true"></i>
+        </span>
+        Create Local
+    </button>
+
+</div>

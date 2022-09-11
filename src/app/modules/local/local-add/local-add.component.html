@@ -1,0 +1,129 @@
+<div class="container">
+    <div class="breadcrumbs">
+        <a href="#" class="home"> Home </a>
+        <span> > </span>
+        <a href="#" class="home mg-20"> Locals </a>
+        <span> > </span>
+        <a href="#" class="active"> Create Locals</a>
+    </div>
+
+    <div class="add-local">
+        <div class="header">
+            Local Details
+        </div>
+        <div class="details">
+            <form #f="ngForm" [formGroup]="localForm">
+                <div class="field-row">
+                    <div class="field-group">
+                        <label class="required">Local Name</label>
+                        <span>
+                            <input type="text" formControlName="levelValue">
+                        </span>
+                        <span class="example">
+                            (i.e. IBEW Local 1234)
+                        </span>
+                    </div>
+                    <div class="field-error" *ngIf="localForm?.controls?.['levelValue']?.errors && isSubmitted">
+                        Please Enter Local Name
+                    </div>
+                    
+                </div>
+                <div class="field-row">
+                    <div class="field-group">
+                        <label class="required">Parent</label>
+                        <span>
+                            <select formControlName="parentId">
+                                <option value="">Select</option>
+                                <option *ngFor="let item of parentList" [value]="item.id">{{item.levelValue}}</option>
+                            </select>
+                        </span>
+                    </div>
+                    <div class="field-error" *ngIf="localForm?.controls?.['parentId']?.errors && isSubmitted">
+                        Please Select Parent
+                    </div>
+                </div>
+                <div class="field-row">
+                    <div class="field-group">
+                        <label class="required">Country</label>
+                        <span>
+                            <select formControlName="country" >
+                                <option value="">Select</option>
+                                <option *ngFor="let item of countryList" [value]="item.value">{{item.name}}</option>
+                            </select>
+                        </span>
+                    </div>
+                    <div class="field-error" *ngIf="localForm?.controls?.['country']?.errors && isSubmitted">
+                        Please Select Country
+                    </div>
+                </div>
+                <div class="field-row">
+                    <div class="field-group">
+                        <label class="required">Address Line 1</label>
+                        <span>
+                            <input type="text" formControlName="addressLine1">
+                        </span>
+                    </div>
+                    <div class="field-error" *ngIf="localForm?.controls?.['addressLine1']?.errors && isSubmitted">
+                        Please Enter Address Line 1
+                    </div>
+                </div>
+                <div class="field-row">
+                    <div class="field-group">
+                        <label class="pad-14">Address Line 2</label>
+                        <span>
+                            <input type="text" formControlName="addressLine2">
+                        </span>
+                    </div>
+                </div>
+                <div class="field-row">
+                    <div class="field-group">
+                        <label class="required">State</label>
+                        <span>
+                            <select formControlName="state">
+                                <option value="">Select</option>
+                                <option *ngFor="let item of stateList" [value]="item.value">{{item.name}}</option>
+                            </select>
+                        </span>
+                    </div>
+                    <div class="field-error" *ngIf="localForm?.controls?.['state']?.errors && isSubmitted">
+                        Please Select State
+                    </div>
+                </div>
+                <div class="field-row">
+                    <div class="field-group">
+                        <label class="required">City</label>
+                        <span>
+                            <select formControlName="city">
+                                <option value="">Select</option>
+                                <option *ngFor="let item of cityList" [value]="item.value">{{item.name}}</option>
+                            </select>
+                        </span>
+                    </div>
+                    <div class="field-error" *ngIf="localForm?.controls?.['city']?.errors && isSubmitted">
+                        Please Select City
+                    </div>
+                </div>
+                <div class="field-row">
+                    <div class="field-group">
+                        <label class="required" >Is Active?</label>
+                        <span>
+                            <select formControlName="enabled">
+                                <option value="">Select</option>
+                                <option [value]="true">Yes</option>
+                                <option [value]="false">No</option>
+                            </select>
+                        </span>
+                    </div>
+                    <div class="field-error" *ngIf="localForm?.controls?.['enabled']?.errors && isSubmitted">
+                        Please Select Active
+                    </div>
+                </div>
+
+                <div class="submit-button">
+                    <button class="btn btn-primary" type="submit" (click)="addLocal()">Save</button>
+                    <button class="btn btn-primary" type="submit">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,97 @@
+.container {
+    padding-top: 35px;
+    min-height: calc(100vh - 129px);
+}
+
+.breadcrumbs .home {
+    color: #000;
+    font-weight: bold;
+    margin-right: 10px;
+    text-decoration: none;
+}
+
+.breadcrumbs .active {
+    color: #a0a0a0;
+    margin-left: 10px;
+    text-decoration: none;
+}
+
+.breadcrumbs span {
+    color: #000;
+    font-weight: bold;
+}
+
+.search {
+    text-align: center;
+}
+
+.search-input {
+    width: 35%;
+    border: none;
+    height: 32px;
+    padding-left: 10px;
+    font-size: 12px;
+    font-family: 'Muli';
+    border-radius: 3px;
+}
+
+input:focus-visible {
+    border: none;
+    outline: none;
+}
+
+.list .header {
+    display: grid;
+    background-color: #7B5B4D;
+    color: white;
+    font-weight: bold;
+    grid-template-columns: 3fr 1fr 1fr 1fr;
+    padding: 10px;
+    margin-top: 50px;
+}
+
+.list .body {
+    display: grid;
+    grid-template-columns: 3fr 1fr 1fr 1fr;
+    font-weight: bold;
+}
+
+.list .body div {
+    padding: 10px 10px;
+}
+
+.cursor-pointer {
+    cursor: pointer;
+}
+
+.body a {
+    visibility: hidden;
+    color: red;
+}
+
+.body:hover a {
+    visibility: visible;
+}
+
+.fab-btn {
+    background-color: white;
+    position: absolute;
+    bottom: 100px;
+    z-index: 100;
+    right: 50px;
+    width: 200px;
+    border: none;
+    border-radius: 50px;
+    padding: 15px;
+    font-weight: bold;
+    font-size: 12px;
+    text-align: inherit;
+}
+
+.fab-btn span{
+    padding: 10px 12px;
+    background: orange;
+    border-radius: 20px;
+    color: white;
+    margin-right: 20px;
+}
