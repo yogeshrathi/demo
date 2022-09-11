@@ -76,10 +76,13 @@ export class LocalAddComponent implements OnInit {
     if(this.localForm.invalid){
       this.isSubmitted  = true;
     } else{
+      this.spinner.show();
       this.localService.addUnion(this.localForm.value).subscribe(res => {
         alert('Local added');
+        this.spinner.hide();
         this.router.navigate(['local/list'])
       },(err) => {
+        this.spinner.hide();
         alert('Something went wrong');
         this.localForm.reset();
       })

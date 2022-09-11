@@ -1,6 +1,7 @@
 import { LocalService } from './../local.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-local-table',
@@ -12,6 +13,7 @@ export class LocalTableComponent implements OnInit {
   expanded: any = {};
   constructor(
     private localService: LocalService,
+    private spinner: NgxSpinnerService,
     private router: Router) { }
 
   ngOnInit(): void {
@@ -19,8 +21,9 @@ export class LocalTableComponent implements OnInit {
   }
 
   getAllUnions() {
+    this.spinner.show();
     this.localService.getAllUnions().subscribe(res => {
-      console.log(res);
+      this.spinner.hide();
       this.generateTree(res);
     })
   }
@@ -35,7 +38,6 @@ export class LocalTableComponent implements OnInit {
         })
       }
     });
-    console.log(this.unionTree);
   }
 
   getChild(unionArr: any, key: number) {
