@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { NgxSpinnerService } from 'ngx-spinner';
 import { LocalService } from '../local.service';
 
 @Component({
@@ -48,6 +49,7 @@ export class LocalAddComponent implements OnInit {
 
   constructor(
     private localService: LocalService,
+    private spinner: NgxSpinnerService,
     private router: Router) { }
 
   ngOnInit(): void {
@@ -55,13 +57,17 @@ export class LocalAddComponent implements OnInit {
   }
 
   getParentData() {
+    this.spinner.show();
     this.localService.getAllUnions().subscribe(res => {
       this.parentList = [];
+      this.spinner.hide();
       res.forEach((element: any, key: any) => {
         if (element.level == 'INTERNATIONAL') {
           this.parentList.push(element)
         }
       });
+    }, (err) => {
+      this.spinner.hide();
     })
   }
 
